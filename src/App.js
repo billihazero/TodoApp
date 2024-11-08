@@ -35,7 +35,7 @@ function App() {
       id: idRef.current,
       isDone: false,
       content,
-      createdDate: new Date().getTime,
+      createdDate: new Date().getTime(),
     };
 
     setTodo([newItem, ...todo]); //newItem과 todo의 모든 배열요소를 호출한다. '...' 배열의 모든 요소 의미
