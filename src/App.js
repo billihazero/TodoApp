@@ -38,15 +38,23 @@ function App() {
       createdDate: new Date().getTime(),
     };
 
-    setTodo([newItem, ...todo]); //newItem과 todo의 모든 배열요소를 호출한다. '...' 배열의 모든 요소 의미
+    setTodo([newItem, ...todo]);
     idRef.current += 1;
+  };
+
+  const onUpdate = (targetId) => {
+    setTodo(
+      todo.map((it) =>
+        it.id === targetId ? { ...it, isDone: !it.isDone } : it
+      )
+    );
   };
 
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} />
+      <TodoList todo={todo} onUpdate={onUpdate} />
     </div>
   );
 }
